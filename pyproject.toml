@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "sgap"
+version = "0"
+readme = "README.md"
+homepage = "https://github.com/shawwn/sgap"
+description = "Shawn Presser's Python utilities"
+authors = ["Shawn Presser"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["setuptools", "poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.urls]
+"Shawn's Website" = "https://www.shawwn.com"
+"Support me on Patreon" = "https://www.patreon.com/shawwn"
+"@theshawwn on Twitter" = "https://www.twitter.com/theshawwn"
+"sillysaurusx on Hacker News" = "https://news.ycombinator.com/threads?id=sillysaurusx"
+
+[tool.poetry-version-plugin]
+source = "init"
