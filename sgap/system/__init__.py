@@ -21,7 +21,7 @@ def run(
         if args:
             cmd += " " + shlex.join(args)
     else:
-        cmd = [cmd] + args
+        cmd = [cmd] + list(args)
     del args
     p = subprocess.Popen(
         cmd,
@@ -46,6 +46,4 @@ def run(
         print("`%s` returned %s" % (cmd, p.returncode), file=error_output)
     if stderr:
         print(stderr.rstrip(), file=error_output)
-    raise subprocess.CalledProcessError(
-        "Command '%s' returned non-zero exit status %d" % (cmd, p.returncode)
-    )
+    raise subprocess.CalledProcessError(p.returncode, cmd, output=stdout, stderr=stderr)
