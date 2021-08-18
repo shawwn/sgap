@@ -12,6 +12,7 @@ python = "^3.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^5.2"
+pre-commit = "^2.14.0"
 
 [build-system]
 requires = ["setuptools", "poetry-core"]
