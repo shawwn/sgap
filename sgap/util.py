@@ -4,10 +4,12 @@ def to_bytes(str_input) -> bytes:
         return str_input
     return str_input.encode("utf-8")
 
+
 def to_string(bytes_input) -> str:
     if isinstance(bytes_input, str):
         return bytes_input
     return bytes_input.decode("utf-8")
+
 
 def convert_string(bytes_input) -> str:
     try:

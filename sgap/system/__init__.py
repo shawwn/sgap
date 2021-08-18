@@ -7,15 +7,26 @@ import sys
 from .. import util
 
 
-def run(cmd: str, *args: str, stdin=None, verbose=True, strip=True, encoding="utf-8", error_output=sys.stderr, shell=False):
+def run(
+    cmd: str,
+    *args: str,
+    stdin=None,
+    verbose=True,
+    strip=True,
+    encoding="utf-8",
+    error_output=sys.stderr,
+    shell=False
+):
     if shell:
         if args:
-            cmd += ' ' + shlex.join(args)
+            cmd += " " + shlex.join(args)
     else:
         cmd = [cmd] + args
     del args
     p = subprocess.Popen(
-        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
         stdin=subprocess.PIPE if stdin is not None else None,
         encoding=encoding,
         shell=shell,
@@ -35,4 +46,6 @@ def run(cmd: str, *args: str, stdin=None, verbose=True, strip=True, encoding="ut
         print("`%s` returned %s" % (cmd, p.returncode), file=error_output)
     if stderr:
         print(stderr.rstrip(), file=error_output)
-    raise subprocess.CalledProcessError("Command '%s' returned non-zero exit status %d" % (cmd, p.returncode))
+    raise subprocess.CalledProcessError(
+        "Command '%s' returned non-zero exit status %d" % (cmd, p.returncode)
+    )
